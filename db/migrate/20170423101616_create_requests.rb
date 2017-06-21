@@ -9,11 +9,13 @@ class CreateRequests < ActiveRecord::Migration[5.0]
       t.string :image
       t.string :request_id
       t.integer :wishes_count
-      t.references :poster, foreign_key: true
-      t.references :helper, foreign_key: true
+      t.integer :poster_id
+      t.integer :helper_id
 
       t.timestamps
     end
+    add_foreign_key :requests, :users, column: :poster_id
+    add_foreign_key :requests, :users, column: :helper_id
     add_index :requests, :request_id, unique: true
   end
 end

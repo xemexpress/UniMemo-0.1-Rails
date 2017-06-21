@@ -5,10 +5,12 @@ class CreateGifts < ActiveRecord::Migration[5.0]
       t.string :image
       t.string :gift_id
       t.datetime :expire_at
-      t.references :provider, foreign_key: true
-      t.references :receiver, foreign_key: true
+      t.integer :provider_id
+      t.integer :receiver_id
 
       t.timestamps
     end
+    add_foreign_key :gifts, :users, column: :provider_id
+    add_foreign_key :gifts, :users, column: :receiver_id
   end
 end

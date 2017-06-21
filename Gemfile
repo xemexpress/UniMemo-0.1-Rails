@@ -40,6 +40,7 @@ gem 'devise'
 gem 'jwt'
 gem 'rack-cors'
 gem 'hashids'
+gem 'pg'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

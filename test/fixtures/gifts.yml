@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  text: MyText
+  image: MyString
+  gift_id: MyString
+  expire_at: 2017-04-25 21:34:55
+  provider: one
+  receiver: one
+
+two:
+  text: MyText
+  image: MyString
+  gift_id: MyString
+  expire_at: 2017-04-25 21:34:55
+  provider: two
+  receiver: two

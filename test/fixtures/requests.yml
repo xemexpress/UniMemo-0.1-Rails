@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  start_time: 2017-04-23 18:16:16
+  start_place: MyString
+  end_time: 2017-04-23 18:16:16
+  end_place: MyString
+  text: MyText
+  image: MyString
+  request_id: MyString
+  wishes_count: 1
+  poster: one
+  helper: one
+
+two:
+  start_time: 2017-04-23 18:16:16
+  start_place: MyString
+  end_time: 2017-04-23 18:16:16
+  end_place: MyString
+  text: MyText
+  image: MyString
+  request_id: MyString
+  wishes_count: 1
+  poster: two
+  helper: two

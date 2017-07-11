@@ -8,10 +8,10 @@ class User < ApplicationRecord
                        presence: true,
                        allow_blank: false,
                        length: { maximum: 20 },
-                       format: { with: /\A[a-zA-Z0-9]+\z/, message: ': only alphanumeric characters are allowed' }
+                       format: { with: /\A[a-zA-Z0-9]+\z/, message: ' should consist of alphanumeric characters only; ' }
   validates :bio, length: { maximum: 200 }
   validates :mobileNum, uniqueness: true,
-                        format: { with: /\A[0-9]+\z/, message: ': only numbers are allowed' },
+                        format: { with: /\A[0-9]+\z/, message: ' should consist of numbers only; ' },
                         length: { in: 8..13 }, if: 'mobileNum.present?'
 
   has_many :requests, dependent: :destroy

@@ -21,6 +21,7 @@ Rails.application.routes.draw do
       resources :ends, param: :mem, only: [:update]
       get :taking, on: :collection
       get :collect, on: :collection
+      get :furtherCollect, on: :collection
     end
 
     resources :tags, only: [:index]

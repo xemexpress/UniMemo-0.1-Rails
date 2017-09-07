@@ -6,6 +6,8 @@ class RequestsController < ApplicationController
   def index
     @requests = Request.includes(:poster, :helper)
 
+    @requests = @requests.where.not(poster: current_user.following_users)
+
     @requests = @requests.where.not(id: @requests.tagged_with(params[:not_this_tag]).pluck(:id)) if params[:not_this_tag].present?
 
     @requests = @requests.tagged_with(params[:tag]) if params[:tag].present?
@@ -19,6 +21,18 @@ class RequestsController < ApplicationController
     @requests_count = @requests.count
 
     @requests = @requests.order(created_at: :desc).offset(params[:offset] || 0).limit(params[:limit] || 10)
+  end
+
+  def taking
+    @requests = current_user.following_requests
+
+    @requests = @requests.tagged_with(params[:tag]) if params[:tag].present?
+
+    @requests_count = @requests.count
+
+    @requests = @requests.order(:created_at).offset(params[:offset] || 0).limit(params[:limit] || 10)
+
+    render :index
   end
 
   def collect
@@ -62,17 +76,6 @@ class RequestsController < ApplicationController
     render :index
   end
 
-  def taking
-    @requests = current_user.following_requests
-
-    @requests = @requests.tagged_with(params[:tag]) if params[:tag].present?
-
-    @requests_count = @requests.count
-
-    @requests = @requests.order(:created_at).offset(params[:offset] || 0).limit(params[:limit] || 10)
-
-    render :index
-  end
 
   def create
     @request = Request.new(request_params)
